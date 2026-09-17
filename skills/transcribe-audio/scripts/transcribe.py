@@ -16,6 +16,13 @@ MODEL_SIZE = "small"
 
 
 def main() -> int:
+    # Windows consoles default stdout/stderr to the system codepage, not
+    # UTF-8 - without this, transcripts in Russian (or anything non-ASCII)
+    # come out as mojibake regardless of what the terminal claims to support.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("audio_path", help="Path to the audio file to transcribe")
     parser.add_argument(
