@@ -1,0 +1,9 @@
+{
+  "name": "transcribe-audio",
+  "version": "1.0.0",
+  "description": "Local, offline speech-to-text for voice messages and audio files (ogg/opus, mp3, wav, m4a, ...) using faster-whisper. No cloud API, no per-call cost.",
+  "author": {
+    "name": "Alex Khaiminov"
+  },
+  "keywords": ["audio", "transcription", "whisper", "voice", "telegram", "speech-to-text"]
+}
