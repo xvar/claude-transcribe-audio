@@ -24,7 +24,10 @@ cost, which matters for something that runs on every voice message.
 Check whether `${CLAUDE_PLUGIN_ROOT}/scripts/venv` exists. If not, run:
 
 ```
+# Windows
 powershell -ExecutionPolicy Bypass -File "${CLAUDE_PLUGIN_ROOT}/scripts/setup.ps1"
+# Linux / WSL / macOS (uses uv, no sudo - distro Python often lacks venv)
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/setup.sh"
 ```
 
 This needs Python 3 (`winget install --id=Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements --silent --scope user`
@@ -37,7 +40,10 @@ decodes audio itself via bundled PyAV.
 ## How to run it
 
 ```
+# Windows
 ${CLAUDE_PLUGIN_ROOT}/scripts/venv/Scripts/python.exe ${CLAUDE_PLUGIN_ROOT}/scripts/transcribe.py "<path-to-audio-file>"
+# Linux / WSL / macOS
+${CLAUDE_PLUGIN_ROOT}/scripts/venv/bin/python ${CLAUDE_PLUGIN_ROOT}/scripts/transcribe.py "<path-to-audio-file>"
 ```
 
 The transcript is printed to stdout as plain text. A line like
@@ -57,4 +63,4 @@ clip.
 - CPU-only inference: a typical voice message (under a minute) transcribes
   in a few seconds; warn the user before running this on long audio.
 - If `import faster_whisper` fails, the venv is broken or missing - rerun
-  `setup.ps1`.
+  `setup.ps1` (Windows) or `setup.sh` (Linux/WSL/macOS).

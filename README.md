@@ -22,7 +22,7 @@ claude --plugin-dir /path/to/claude-transcribe-audio
 ## Install as a personal skill on another machine
 
 Copy `skills/transcribe-audio/` into that machine's `~/.claude/skills/`,
-then run its `scripts/setup.ps1` once (see the SKILL.md for the exact
+then run its `scripts/setup.ps1` (Windows) or `scripts/setup.sh` (Linux/WSL/macOS) once (see the SKILL.md for the exact
 command - it just needs Python 3 and an internet connection for the first
 run).
 
@@ -48,7 +48,8 @@ skills/transcribe-audio/
   scripts/
     transcribe.py                   - the actual transcription script
     requirements.txt                - just faster-whisper
-    setup.ps1                       - one-time venv + install, idempotent
+    setup.ps1                       - one-time venv + install, idempotent (Windows)
+    setup.sh                        - same for Linux/WSL/macOS, via uv
 ```
 
 No hardcoded paths - everything resolves relative to its own location
